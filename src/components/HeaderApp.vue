@@ -20,6 +20,9 @@ export default {
 
 
 <style lang="scss" scoped>
+header{
+  margin-bottom: 20px;
+}
 .logo{
   width: 50px;
   height: 50px;
