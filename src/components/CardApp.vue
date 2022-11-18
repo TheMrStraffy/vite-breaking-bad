@@ -1,28 +1,17 @@
 <script>
-import axios from "axios";
-import {store} from '../data/store'
 export default {
   name:"CardApp",
   
   data(){
     return{
-      store
     }
   },
+  props: {characters:Object},
   methods:{
-    getCharacters(){
-      axios.get(store.apiUrl)
-      .then(result => {
-        store.charactersArray = result.data;
-        console.log(store.charactersArray);
-      })
-      .catch( error => {
-        console.log(error);
-      })
-    }
+    
   },
   mounted(){
-    this.getCharacters();
+    
   },
   created(){
 
@@ -31,7 +20,7 @@ export default {
 </script>
 <template>
   <div 
-  v-for="character in store.charactersArray" :key="character.id"
+  v-for="character in characters" :key="character.id"
   class="col">
 
   <div class="mc-card">
@@ -50,7 +39,7 @@ export default {
 @use '../styles/partials/vars' as *;
 .mc-card{
   width: 230px;
-  height: 400px;
+  height: 420px;
   margin-bottom: 20px;
   padding-top: 20px;
   background-color: $brPrimaryColor;

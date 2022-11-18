@@ -1,12 +1,14 @@
 <script>
+import {store} from '../data/store'
+import LoadingApp from './LoadingApp.vue'
 import SectionAppVue from './SectionApp.vue'
 
 export default {
   name: "MainApp",
-  components: {SectionAppVue},
+  components: {SectionAppVue, LoadingApp},
   data(){
     return{
-
+      store
     }
   }
 }
@@ -16,16 +18,17 @@ export default {
   <main>
     <div class="selection">
 
-    <select class="form-select" aria-label="Default select example">
-    <option selected>Select Category</option>
-    <option value="1">All Characters</option>
-    <option value="2">Breaking Bad</option>
-    <option value="3">Better Call Saul</option>
+    <select v-model="store.categoryToSearch" class="form-select" @change="$emit('searchCategory')">
+    <option value = "" selected>All Characters</option>
+    <option value="Breaking Bad">Breaking Bad</option>
+    <option value="Better Call Saul">Better Call Saul</option>
     </select>
     </div>
-    <div class="mc-container">
-
-    <SectionAppVue/>
+    <div v-if="!store.isLoaded" class="mc-container d-flex justify-content-center align-items-center">
+    <LoadingApp />
+    </div>
+    <div v-else class="mc-container">
+    <SectionAppVue  />
     </div>
     
   </main>

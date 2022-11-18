@@ -1,12 +1,15 @@
 <script>
+import {store} from '../data/store'
 import CardAppVue from './CardApp.vue'
 export default {
   name: "SectionApp",
   components: {CardAppVue},
   data(){
     return{
+      store
     }
-  }
+  },
+  
 }
 </script>
 
@@ -15,11 +18,11 @@ export default {
 <section class="container p-5">
 
   <div class="foundBar">
-    <h4>Found 62 characters</h4>
+    <h4>Found {{store.charactersArray.length}} characters</h4>
   </div>
   <div class="row">
 
-  <CardAppVue/>
+  <CardAppVue :characters="store.charactersArray" />
   </div>
 
 </section>
