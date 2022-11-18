@@ -9,6 +9,11 @@ export default {
       store
     }
   },
+  computed:{
+    totalFound(){
+      return store.charactersArray.length;
+    }
+  }
   
 }
 </script>
@@ -18,7 +23,7 @@ export default {
 <section class="container p-5">
 
   <div class="foundBar">
-    <h4>Found {{store.charactersArray.length}} characters</h4>
+    <h4>Found {{totalFound}} characters</h4>
   </div>
   <div class="row">
 
